@@ -1,37 +1,32 @@
 # Portable Environmental Data Logger
 
-An Arduino-based environmental monitoring system that measures temperature, relative humidity, and ambient light intensity. It displays live sensor readings on an OLED screen and transmits measurement data to a computer through USB serial communication.
+An Arduino-based environmental monitoring system that measures temperature, relative humidity, and ambient light intensity. It displays live readings on an OLED and transmits sensor data to a computer via USB serial communication.
 
-The project demonstrates the integration of embedded systems, sensors, analog and digital interfacing, serial communication, and data analysis.
+The project explores embedded systems, sensor interfacing, analog and digital electronics, and serial communication.
 
-## 1. Features
+## Features
 
-- Real-time temperature monitoring using DHT11.
-- Relative humidity measurement.
+- Temperature and humidity monitoring using DHT11.
 - Ambient light sensing using an LDR.
-- Live readings displayed on a 0.96-inch OLED.
-- USB serial communication between Arduino and computer.
+- Live readings on a 0.96-inch SSD1306 OLED.
+- USB serial data transmission.
 - Periodic sensor readings at 2-second intervals.
-- CSV-formatted measurement output.
-- Optional Python-based automated data logging.
-- Optional data visualization using Python.
+- CSV-formatted serial output.
 
-## 2. Hardware Components
+## Hardware Components
 
 | Component | Purpose |
 |---|---|
 | Arduino Uno R3 | Main microcontroller |
 | DHT11 | Temperature and humidity sensing |
-| LDR | Ambient light detection |
-| 10 kΩ resistor | LDR voltage divider |
+| LDR + 10 kΩ resistor | Light sensing |
 | 0.96-inch OLED (SSD1306) | Display |
-| Breadboard | Circuit assembly |
-| Jumper wires | Connections |
-| USB cable | Power and serial communication |
+| Breadboard and jumper wires | Circuit assembly |
+| USB cable | Power and communication |
 
-## 3. Circuit Connections
+## Circuit Connections
 
-### DHT11
+**DHT11**
 
 | Sensor | Arduino |
 |---|---|
@@ -39,44 +34,35 @@ The project demonstrates the integration of embedded systems, sensors, analog an
 | DATA | D2 |
 | GND | GND |
 
-### OLED Display (I2C)
+**OLED (I²C)**
 
-| OLED | Arduino Uno |
+| OLED | Arduino |
 |---|---|
-| VCC | 5V (if supported by module) |
+| VCC | 5V (if supported) |
 | GND | GND |
 | SDA | A4 |
 | SCL | A5 |
 
-### LDR Voltage Divider
+**LDR Voltage Divider**
+- LDR between 5V and A0.
+- 10 kΩ resistor between A0 and GND.
 
-- One LDR terminal connected to 5V.
-- Other LDR terminal connected to A0.
-- A 10 kΩ resistor connected between A0 and GND.
+## Software and Tools
 
-## 4. Software and Tools
-
-- VS Code
-- PlatformIO IDE extension
-- Arduino framework
-- C++
+- VS Code and PlatformIO
+- Arduino framework (C++)
 - Adafruit DHT Sensor Library
 - Adafruit SSD1306 Library
 - Adafruit GFX Library
 
-Optional computer-side tools:
+## Future Improvements
 
-- Python 3
-- PySerial
-- Pandas
-- Matplotlib
-
-## 9. Future Improvements
-
-- Replace DHT11 with a more accurate temperature and humidity sensor.
-- Add SD card storage for standalone logging.
-- Add an RTC module for independent calendar timestamps.
-- Implement wireless data transmission using ESP32.
-- Add battery-powered operation.
-- Implement sensor calibration and measurement error analysis.
-- Develop a real-time computer dashboard.
+- Python-based serial data logging to CSV using PySerial.
+- Data analysis and visualization using Pandas and Matplotlib.
+- Real-time computer dashboard.
+- More accurate temperature and humidity sensors.
+- SD card storage for standalone logging.
+- RTC integration for independent timestamps.
+- ESP32-based wireless monitoring.
+- Battery-powered operation.
+- Sensor calibration and measurement error analysis.
